@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: mysqlDawes2:3306
--- Tiempo de generación: 20-03-2023 a las 08:29:49
+-- Tiempo de generación: 21-03-2023 a las 07:32:30
 -- Versión del servidor: 5.7.22
 -- Versión de PHP: 8.0.19
 
@@ -53,7 +53,7 @@ CREATE TABLE `Compra` (
   `codProduct` int(11) NOT NULL,
   `amount` int(9) DEFAULT NULL,
   `price` decimal(8,2) DEFAULT NULL,
-  `datePurchase` date DEFAULT NULL
+  `datePurchase` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 -- --------------------------------------------------------
@@ -216,7 +216,7 @@ ALTER TABLE `Categoria`
 -- Indices de la tabla `Compra`
 --
 ALTER TABLE `Compra`
-  ADD PRIMARY KEY (`idUsuario`,`codProduct`),
+  ADD PRIMARY KEY (`idUsuario`,`codProduct`,`datePurchase`),
   ADD KEY `codProduct` (`codProduct`);
 
 --
@@ -257,8 +257,8 @@ ALTER TABLE `Producto`
 -- Filtros para la tabla `Compra`
 --
 ALTER TABLE `Compra`
-  ADD CONSTRAINT `Compra_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `Usuario` (`nameuser`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `Compra_ibfk_2` FOREIGN KEY (`codProduct`) REFERENCES `Producto` (`codProduct`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `Compra_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `Usuario` (`nameuser`),
+  ADD CONSTRAINT `Compra_ibfk_2` FOREIGN KEY (`codProduct`) REFERENCES `Producto` (`codProduct`);
 
 --
 -- Filtros para la tabla `Producto`

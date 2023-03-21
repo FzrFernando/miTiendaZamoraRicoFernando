@@ -24,7 +24,7 @@ public class CategoryDAO {
 		session = sf.openSession();
 	}
 	
-	public boolean addAndEditCategory(Category c) {
+	public boolean addAndEditCategory(Category c) throws Exception {
 		boolean add = false;
 		try {
 			session.getTransaction().begin();
@@ -33,12 +33,12 @@ public class CategoryDAO {
 			add = true;
 		}
 		catch (Exception e) {
-			System.out.println(e.getMessage());
+			throw new Exception("Es imposible añadir o editar la categoría");
 		}
 		return add;
 	}
 	
-	public boolean deleteCategory(Category c) {
+	public boolean deleteCategory(Category c) throws Exception {
 		boolean del = false;
 		try {
 			session.getTransaction().begin();
@@ -47,18 +47,18 @@ public class CategoryDAO {
 			del = true;
 		}
 		catch (Exception e) {
-			System.out.println(e.getMessage());
+			throw new Exception("Es imposible borrar la categoría");
 		}
 		return del;
 	}
 	
-	public Category findCategory(int code) {
+	public Category findCategory(int code) throws Exception {
 		Category c = null;
 		try {
 			c = session.get(Category.class, code);
 		}
 		catch (Exception e) {
-			System.out.println(e.getMessage());
+			throw new Exception("No es posible encontrar la categoría");
 		}
 		return c;
 	}

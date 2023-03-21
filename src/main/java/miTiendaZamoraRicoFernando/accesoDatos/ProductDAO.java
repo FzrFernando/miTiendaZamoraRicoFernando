@@ -23,7 +23,7 @@ public class ProductDAO {
 		session = sf.openSession();
 	}
 	
-	public boolean addAndEditProduct(Product p) {
+	public boolean addAndEditProduct(Product p) throws Exception {
 		boolean add = false;
 		try {
 			session.getTransaction().begin();
@@ -32,12 +32,12 @@ public class ProductDAO {
 			add = true;
 		}
 		catch (Exception e) {
-			System.out.println(e.getMessage());
+			throw new Exception("Es imposible añadir o editar el producto");
 		}
 		return add;
 	}
 	
-	public boolean deleteProduct(Product p) {
+	public boolean deleteProduct(Product p) throws Exception {
 		boolean del = false;
 		try {
 			session.getTransaction().begin();
@@ -46,18 +46,18 @@ public class ProductDAO {
 			del = true;
 		}
 		catch (Exception e) {
-			System.out.println(e.getMessage());
+			throw new Exception("Es imposible borrar el producto");
 		}
 		return del;
 	}
 	
-	public Product findProduct(int code) {
+	public Product findProduct(int code) throws Exception {
 		Product p = null;
 		try {
 			p = session.get(Product.class, code);
 		}
 		catch (Exception e) {
-			System.out.println(e.getMessage());
+			throw new Exception("No ha sido posible encontrar el producto");
 		}
 		return p;
 	}

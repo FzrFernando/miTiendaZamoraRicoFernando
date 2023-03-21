@@ -1,21 +1,24 @@
 package miTiendaZamoraRicoFernando.logica;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Objects;
 
 public class PurchaseId implements Serializable{
 
 	private String user;
 	private int product;
+	private Date datePurchase;
 	
 	public PurchaseId() {
 		super();
 	}
 
-	public PurchaseId(String user, int product) {
+	public PurchaseId(String user, int product, Date datePurchase) {
 		super();
 		this.user = user;
 		this.product = product;
+		this.datePurchase = datePurchase;
 	}
 
 	public String getUser() {
@@ -34,9 +37,17 @@ public class PurchaseId implements Serializable{
 		this.product = product;
 	}
 
+	public Date getDatePurchase() {
+		return datePurchase;
+	}
+
+	public void setDatePurchase(Date datePurchase) {
+		this.datePurchase = datePurchase;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(product, user);
+		return Objects.hash(datePurchase, product, user);
 	}
 
 	@Override
@@ -48,8 +59,8 @@ public class PurchaseId implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		PurchaseId other = (PurchaseId) obj;
-		return product == other.product && Objects.equals(user, other.user);
+		return Objects.equals(datePurchase, other.datePurchase) && product == other.product
+				&& Objects.equals(user, other.user);
 	}
-	
-	
+
 }

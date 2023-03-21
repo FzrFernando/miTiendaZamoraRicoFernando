@@ -33,7 +33,7 @@ public class UserDAO {
 		return valid;
 	}
 	
-	public boolean addUser(User u) {
+	public boolean addUser(User u) throws Exception {
 		boolean add = false;
 		try {
 			session.getTransaction().begin();
@@ -42,8 +42,19 @@ public class UserDAO {
 			add = true;
 		}
 		catch (Exception e) {
-			System.out.println(e.getMessage());
+			throw new Exception("Es imposible añadir el usuario");
 		}
 		return add;
+	}
+	
+	public User findUser(String nameuser) throws Exception {
+		User u = null;
+		try {
+			u = session.get(User.class, nameuser);
+		}
+		catch (Exception e) {
+			throw new Exception("Es imposible encontrar el usuario");
+		}
+		return u;
 	}
 }
