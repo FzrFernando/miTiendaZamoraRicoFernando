@@ -1,3 +1,6 @@
+<%@page import="miTiendaZamoraRicoFernando.accesoDatos.CategoryDAO"%>
+<%@page import="java.util.List"%>
+<%@page import="miTiendaZamoraRicoFernando.logica.Category"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -20,8 +23,29 @@
 	<!--El usuario administrador podrá añadir, editar y borrar, todos los usuarios podrán comprar-->
 	<table border="1">
 		<thead>
-			<th></th>
+			<tr>
+				<th>Code</th>
+				<th>Name</th>
+				<th>Description</th>
+				<th>Products</th>
+			</tr>
 		</thead>
+	<% 
+	CategoryDAO cd = new CategoryDAO();
+	List<Category> list = cd.returnCategory();
+	for (Category c : list) {
+	%>
+	<tbody>
+		<tr>
+			<th><%=c.getId()%></th>
+			<td><%=c.getName()%></td>
+			<td><%=c.getDescription()%></td>
+			<td><a href="mainProducts.jsp?category=<%=c.getId()%>">Ver productos</a></td>
+		</tr>
+	</tbody>
+	<%	
+	}
+	%>
 	</table>
 	<% 
 	} else {	
