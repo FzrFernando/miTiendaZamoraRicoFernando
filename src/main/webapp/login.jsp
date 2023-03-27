@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="miTiendaZamoraRicoFernando.accesoDatos.UserDAO"%>
+<%@page import="miTiendaZamoraRicoFernando.logica.User" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,6 +21,8 @@
 		HttpSession sesion = request.getSession();
 		sesion.setAttribute("isLogin", "True");
 		sesion.setAttribute("usuario", login);
+		User u = ud.findUser("usuario");
+		sesion.setAttribute("admin", u.isAdmin());
 		response.sendRedirect("mainCategory.jsp");
 	}
 	%>

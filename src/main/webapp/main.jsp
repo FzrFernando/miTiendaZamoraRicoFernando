@@ -20,6 +20,14 @@
 		out.println("Hola " + user);
 	%>
 	<a href="mainCategory.jsp">Category</a>
+	<%
+		Boolean admin = (Boolean) sesion.getAttribute("admin");
+		if (admin == true){
+	%>
+	<a href="addProduct.jsp">Add Product</a>
+	<% 
+		}
+	%>
 	<a href="index.jsp">Close Session</a>
 	
 	<table border="1">
@@ -31,6 +39,13 @@
 				<th>Stock</th>
 				<th>Price</th>
 				<th>Category</th>
+				<% 
+				if (admin == true) {
+				%>
+				<th>Actions</th>
+				<%
+				}
+				%>
 			</tr>
 		</thead>
 		<% 
@@ -55,6 +70,16 @@
 					} else {
 						out.println("Sin categoria");
 					}%></td>
+				<% 
+				if (admin == true) {
+				%>
+				<td>
+				<a href="updateProduct.jsp?id=<%=p.getCode()%>">Update</a>
+				<a href="deleteProduct.jsp?id=<%=p.getCode()%>">Delete</a>
+				</td>
+				<%
+				}
+				%>
 			</tr>
 		<% 
 		}

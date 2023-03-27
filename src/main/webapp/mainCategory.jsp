@@ -18,7 +18,14 @@
 	
 	if (login != null && user != null & login.equals("True")){
 		out.println("Hola " + user);
+		Boolean admin = (Boolean) sesion.getAttribute("admin");
+		if (admin == true){
 	%>
+	<a href="addCategory.jsp">Add Category</a>
+	<%	
+		}
+	%>
+	
 	<a href="main.jsp">Show All Products</a>
 	<a href="index.jsp">Close Session</a>
 	<!--El usuario administrador podrá añadir, editar y borrar, todos los usuarios podrán comprar-->
@@ -29,6 +36,13 @@
 				<th>Name</th>
 				<th>Description</th>
 				<th>Products</th>
+				<%
+				if (admin == true) { 
+				%>
+				<th>Actions</th>
+				<%
+				}
+				%>
 			</tr>
 		</thead>
 	<% 
@@ -42,6 +56,16 @@
 			<td><%=c.getName()%></td>
 			<td><%=c.getDescription()%></td>
 			<td><a href="main.jsp?category=<%=c.getId()%>">Ver productos</a></td>
+			<% 
+			if (admin == true) { 
+			%>
+			<td>
+				<a href="updateCategory.jsp?id=<%=c.getId()%>">Update</a>
+				<a href="deleteCategory.jsp?id=<%=c.getId()%>">Delete</a>
+			</td>
+			<%
+			} 
+			%>
 		</tr>
 	</tbody>
 	<%	
