@@ -63,13 +63,13 @@ public class ProductDAO {
 	}
 	
 	public List<Product> returnProduct() {
-		Query query = session.createQuery("SELECT p FROM proyectoJPA.logica.Product p");
+		Query query = session.createQuery("SELECT p FROM miTiendaZamoraRicoFernando.logica.Product p");
 		List<Product> products = (List<Product>) query.getResultList();
 		return products;
 	}
 	
 	public List<Product> returnProductCategory(int category) {
-		Query query = session.createQuery("SELECT p FROM proyectoJPA.logica.Product p WHERE category =" + category );
+		Query query = session.createQuery("SELECT p FROM miTiendaZamoraRicoFernando.logica.Product p WHERE category =" + category );
 		List<Product> products = (List<Product>) query.getResultList();
 		return products;
 	}

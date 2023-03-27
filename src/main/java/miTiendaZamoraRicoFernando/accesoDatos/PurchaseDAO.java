@@ -75,7 +75,7 @@ public class PurchaseDAO {
 	}
 	
 	public List<Purchase> returnPurchase() {
-		Query query = session.createQuery("SELECT p FROM proyectoJPA.logica.Purchase p");
+		Query query = session.createQuery("SELECT p FROM miTiendaZamoraRicoFernando.logica.Purchase p");
 		List<Purchase> products = (List<Purchase>) query.getResultList();
 		return products;
 	}

@@ -64,7 +64,7 @@ public class CategoryDAO {
 	}
 	
 	public List<Category> returnCategory() {
-		Query query = session.createQuery("SELECT c FROM proyectoJPA.logica.Category c");
+		Query query = session.createQuery("SELECT c FROM miTiendaZamoraRicoFernando.logica.Category c");
 		List<Category> products = (List<Category>) query.getResultList();
 		return products;
 	}
