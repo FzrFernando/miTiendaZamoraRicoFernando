@@ -12,18 +12,23 @@
 	<% 
 	String login = request.getParameter("usuario");
 	String password = request.getParameter("contrasena");
-	
-	UserDAO ud = new UserDAO();
-	if (!ud.validateUser(login, password)){
-		response.sendRedirect("ErrorLogin");
+	/*Mirar si el usuario y contraseña que no sean nulos*/
+	if (login != null || password != null) {
+		UserDAO ud = new UserDAO();
+		if (!ud.validateUser(login, password)){
+			response.sendRedirect("ErrorLogin");
+		}
+		else{
+			HttpSession sesion = request.getSession();
+			sesion.setAttribute("isLogin", "True");
+			sesion.setAttribute("usuario", login);
+			User u = ud.findUser(login);
+			sesion.setAttribute("admin", u.isAdmin());
+			response.sendRedirect("mainCategory.jsp");
+		}
 	}
-	else{
-		HttpSession sesion = request.getSession();
-		sesion.setAttribute("isLogin", "True");
-		sesion.setAttribute("usuario", login);
-		User u = ud.findUser("usuario");
-		sesion.setAttribute("admin", u.isAdmin());
-		response.sendRedirect("mainCategory.jsp");
+	else {
+		response.sendRedirect("ErrorLogin");
 	}
 	%>
 </body>
