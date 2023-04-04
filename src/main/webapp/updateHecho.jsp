@@ -51,7 +51,7 @@
 	Product p = new Product(name, description, stock, price, c);
 	Integer code = Integer.parseInt(request.getParameter("code"));
 	ProductDAO pd = new ProductDAO();
-	pd.addAndEditProduct(p);
+	pd.updateProduct(p, code);
 	
 	response.sendRedirect("exito.jsp?msg=El producto ha sido añadido con éxito");
 	%>
