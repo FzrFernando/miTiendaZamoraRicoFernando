@@ -1,7 +1,5 @@
 package miTiendaZamoraRicoFernando.accesoDatos;
 
-import java.sql.Connection;
-import java.sql.Statement;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -18,8 +16,6 @@ public class ProductDAO {
 	private StandardServiceRegistry sr;
 	private SessionFactory sf;
 	private Session session;
-	
-	private Connection conexion;
 
 	public ProductDAO() {
 		sr = new StandardServiceRegistryBuilder().configure().build();
@@ -66,56 +62,6 @@ public class ProductDAO {
 		return p;
 	}
 	
-	public boolean updateProduct(Product p, int code) throws Exception {
-		boolean result = true;
-		Statement insert = (Statement) conexion.createStatement();
-		// Se crea un objeto Product igual al que nos pasan
-		Product aux = findProduct(code);
-		String cadena = "UPDATE PRODUCT SET ";
-		boolean coma = false;
-		// La coma es falsa para empezar, cuando se cambie un campo se pone a true y se añade la coma
-		if (!p.getName().equals(aux.getName())) {
-			cadena = cadena + "name='" + p.getName() + "'";
-			coma = true;
-		}
-		// Ahora compararemos si se cambia en la base de datos, por si se cambia que se añada la sentencia
-		if (p.getStock() != aux.getStock()) {
-			if (coma) {
-				cadena += ",";
-			}
-			cadena = cadena + "stock='" + p.getStock() + "'";
-			coma = true;
-		}
-		if (p.getPrice() != aux.getPrice()) {
-			if (coma) {
-				cadena += ",";
-			}
-			cadena = cadena + "price='" + p.getPrice() + "'";
-			coma = true;
-		}
-		if (!p.getDescription().equals(aux.getDescription())) {
-			if (coma) {
-				cadena += ",";
-			}
-			cadena = cadena + "disponibility='" + p.getDescription() + "'";
-			coma = true;
-		}
-		if (!p.getCategory().equals(aux.getCategory())) {
-			if (coma) {
-				cadena += ",";
-			}
-			cadena = cadena + "category='" + p.getCategory() + "'";
-			coma = true;
-		}
-		
-		cadena += "WHERE codProduct='" + code + "';";
-		
-		System.out.println(cadena);
-		if (insert.executeUpdate(cadena) == 0) {
-			result = false;
-		}
-		return result;
-	}
 	
 	public List<Product> returnProduct() {
 		Query query = session.createQuery("SELECT p FROM miTiendaZamoraRicoFernando.logica.Product p");
