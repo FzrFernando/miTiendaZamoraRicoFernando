@@ -50,9 +50,14 @@
 	
 	User u = new User(usuario,password,name, birthdate, sex, admin);
 	UserDAO ud = new UserDAO();
-	ud.addUser(u);
+	if (ud.findUser(usuario) == null) {
+		ud.addUser(u);
+
+		response.sendRedirect("exito.jsp?msg=Te has registrado con éxito");
+	} else {
+		response.sendRedirect("error.jsp?msg=Ese usuario ya existe");
+	}
 	
-	response.sendRedirect("exito.jsp?msg=Te has registrado con éxito");
 	%>
 </body>
 </html>

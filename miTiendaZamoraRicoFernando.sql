@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: mysqlDawes2:3306
--- Tiempo de generación: 21-03-2023 a las 07:32:30
+-- Tiempo de generación: 10-04-2023 a las 06:48:21
 -- Versión del servidor: 5.7.22
 -- Versión de PHP: 8.0.19
 
@@ -38,9 +38,10 @@ CREATE TABLE `Categoria` (
 --
 
 INSERT INTO `Categoria` (`id`, `name`, `description`) VALUES
-(1, 'Refrescos', 'Bebidas refrescantes'),
+(1, 'Refresquitos', 'Bebidas refrescantes'),
 (2, 'Comida', 'Todos los alimentos'),
-(3, 'Alcohol', 'Bebidas con porcentaje de alcohol');
+(3, 'Alcohol', 'Bebidas con porcentaje de alcohol'),
+(4, 'Categoria Prueba', 'Vaya categoria');
 
 -- --------------------------------------------------------
 
@@ -175,7 +176,8 @@ INSERT INTO `Producto` (`codProduct`, `name`, `description`, `stock`, `price`, `
 (97, 'Crackers - Melba Toast', '7up Diet, 355 Ml', 100, '34.21', 1),
 (98, 'Honey - Comb', 'Squid - Tubes / Tenticles 10/20', 100, '45.45', 2),
 (99, 'Salmon - Fillets', 'Lemonade - Black Cherry, 591 Ml', 100, '80.27', 3),
-(100, 'Bread - Pumpernickel', 'Coffee Decaf Colombian', 100, '33.84', 1);
+(100, 'Bread - Pumpernickel', 'Coffee Decaf Colombian', 100, '33.84', 1),
+(101, 'Producto Prueba', 'Vaya producto', 50, '1.50', 4);
 
 -- --------------------------------------------------------
 
@@ -241,13 +243,13 @@ ALTER TABLE `Usuario`
 -- AUTO_INCREMENT de la tabla `Categoria`
 --
 ALTER TABLE `Categoria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `Producto`
 --
 ALTER TABLE `Producto`
-  MODIFY `codProduct` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `codProduct` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
 -- Restricciones para tablas volcadas
@@ -264,7 +266,7 @@ ALTER TABLE `Compra`
 -- Filtros para la tabla `Producto`
 --
 ALTER TABLE `Producto`
-  ADD CONSTRAINT `Producto_ibfk_1` FOREIGN KEY (`category`) REFERENCES `Categoria` (`id`);
+  ADD CONSTRAINT `Producto_ibfk_1` FOREIGN KEY (`category`) REFERENCES `Categoria` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
