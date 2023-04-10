@@ -24,8 +24,8 @@
 		<input type="date" id="birthdate" name="birthdate" required>
 		<br>
 		<label>Sexo</label>
-		<input type="radio" value="F" id="sex" name="sex" required>
-		<input type="radio" value="M" id="sex" name="sex" required>
+		<input type="radio" value="F" id="sex" name="sex" required>F
+		<input type="radio" value="M" id="sex" name="sex" required>M
 		<br>
 		<input type="submit" value="Registrarse">
 	</form>

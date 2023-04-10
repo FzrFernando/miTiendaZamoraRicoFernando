@@ -51,6 +51,8 @@
 	User u = new User(usuario,password,name, birthdate, sex, admin);
 	UserDAO ud = new UserDAO();
 	ud.addUser(u);
+	
+	response.sendRedirect("exito.jsp?msg=Te has registrado con éxito");
 	%>
 </body>
 </html>

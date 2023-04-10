@@ -1,6 +1,5 @@
 package miTiendaZamoraRicoFernando.logica;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -98,6 +97,10 @@ public class Product {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
+	
+	public String getNombreCategory() {
+		return category.getName();
+	}
 
 	public List<Purchase> getPurchase() {
 		return purchase;
@@ -127,8 +130,10 @@ public class Product {
 	@Override
 	public String toString() {
 		return "Product [code=" + code + ", name=" + name + ", description=" + description + ", stock=" + stock
-				+ ", price=" + price + ", category=" + category + ", purchase=" + purchase + "]";
+				+ ", price=" + price + ", category=" + getNombreCategory() + "]";
 	}
+
+	
 	
 	
 }
