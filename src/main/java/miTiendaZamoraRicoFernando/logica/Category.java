@@ -30,9 +30,10 @@ public class Category {
 		this.products = null;
 	}
 
-	public Category(String name) {
+	public Category(String name, String description) {
 		super();
 		this.name = name;
+		this.description = description;
 		this.products = null;
 	}
 

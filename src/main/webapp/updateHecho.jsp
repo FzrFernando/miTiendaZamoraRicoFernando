@@ -54,7 +54,7 @@
 	ProductDAO pd = new ProductDAO();
 	pd.addAndEditProduct(p);
 	
-	response.sendRedirect("exito.jsp?msg=El producto ha sido añadido con éxito");
+	response.sendRedirect("exito.jsp?msg=El producto ha sido actualizado con éxito");
 	%>
 </body>
 </html>
