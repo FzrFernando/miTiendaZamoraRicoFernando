@@ -1,3 +1,4 @@
+<%@page import="java.util.HashMap"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="miTiendaZamoraRicoFernando.accesoDatos.UserDAO"%>
@@ -24,6 +25,8 @@
 			sesion.setAttribute("usuario", login);
 			User u = ud.findUser(login);
 			sesion.setAttribute("admin", u.isAdmin());
+			HashMap <Object, Integer> carro = new HashMap <Object, Integer> ();
+			sesion.setAttribute("carrito", carro);
 			response.sendRedirect("mainCategory.jsp");
 		}
 	}
