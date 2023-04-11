@@ -36,9 +36,15 @@
 		List<Category> list = cd.returnCategory();
 
 		for (Category c : list) {
+			if (c.getName() != p.getCategory().getName()) {
 		%>
 					<option value="<%=c.getId()%>"><%=c.getName()%></option>
-		<% 
+		<%
+			} else {
+		%>
+					<option selected value="<%=c.getId()%>"><%=c.getName()%></option>
+		<%
+			}
 		}
 		%>
 				</select>
