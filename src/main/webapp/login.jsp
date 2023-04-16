@@ -1,3 +1,4 @@
+<%@page import="miTiendaZamoraRicoFernando.logica.Cart"%>
 <%@page import="java.util.HashMap"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -25,8 +26,8 @@
 			sesion.setAttribute("usuario", login);
 			User u = ud.findUser(login);
 			sesion.setAttribute("admin", u.isAdmin());
-			HashMap <Object, Integer> carro = new HashMap <Object, Integer> ();
-			sesion.setAttribute("carrito", carro);
+			Cart listCart = new Cart();
+			sesion.setAttribute("carrito", listCart);
 			response.sendRedirect("mainCategory.jsp");
 		}
 	}
