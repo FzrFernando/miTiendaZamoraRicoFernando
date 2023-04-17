@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: mysqlDawes2:3306
--- Tiempo de generación: 10-04-2023 a las 06:48:21
+-- Tiempo de generación: 17-04-2023 a las 07:24:00
 -- Versión del servidor: 5.7.22
 -- Versión de PHP: 8.0.19
 
@@ -40,8 +40,7 @@ CREATE TABLE `Categoria` (
 INSERT INTO `Categoria` (`id`, `name`, `description`) VALUES
 (1, 'Refresquitos', 'Bebidas refrescantes'),
 (2, 'Comida', 'Todos los alimentos'),
-(3, 'Alcohol', 'Bebidas con porcentaje de alcohol'),
-(4, 'Categoria Prueba', 'Vaya categoria');
+(3, 'Alcohol', 'Bebidas con porcentaje de alcohol');
 
 -- --------------------------------------------------------
 
@@ -54,7 +53,7 @@ CREATE TABLE `Compra` (
   `codProduct` int(11) NOT NULL,
   `amount` int(9) DEFAULT NULL,
   `price` decimal(8,2) DEFAULT NULL,
-  `datePurchase` date NOT NULL
+  `datePurchase` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 -- --------------------------------------------------------
@@ -177,7 +176,7 @@ INSERT INTO `Producto` (`codProduct`, `name`, `description`, `stock`, `price`, `
 (98, 'Honey - Comb', 'Squid - Tubes / Tenticles 10/20', 100, '45.45', 2),
 (99, 'Salmon - Fillets', 'Lemonade - Black Cherry, 591 Ml', 100, '80.27', 3),
 (100, 'Bread - Pumpernickel', 'Coffee Decaf Colombian', 100, '33.84', 1),
-(101, 'Producto Prueba', 'Vaya producto', 50, '1.50', 4);
+(102, 'Inma', 'inma', 50, '1.50', 2);
 
 -- --------------------------------------------------------
 
@@ -202,7 +201,8 @@ INSERT INTO `Usuario` (`nameuser`, `password`, `name`, `birthdate`, `sex`, `admi
 ('fernando', 'fernando', 'Fernando Zamora', '1999-08-04', 'M', 1),
 ('inma', 'inma', 'Inmaculada Olias', '1990-05-21', 'F', 1),
 ('javi', 'javi', 'Javier Martínez', '2001-03-25', 'M', 0),
-('juanma', 'juanma', 'Juanma García', '1994-04-14', 'M', 0);
+('juanma', 'juanma', 'Juanma García', '1994-04-14', 'M', 0),
+('Usu', 'Usu', 'Usuario', '2023-04-09', 'F', 0);
 
 --
 -- Índices para tablas volcadas
@@ -243,13 +243,13 @@ ALTER TABLE `Usuario`
 -- AUTO_INCREMENT de la tabla `Categoria`
 --
 ALTER TABLE `Categoria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `Producto`
 --
 ALTER TABLE `Producto`
-  MODIFY `codProduct` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
+  MODIFY `codProduct` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
 
 --
 -- Restricciones para tablas volcadas

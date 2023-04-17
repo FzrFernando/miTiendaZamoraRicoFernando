@@ -1,3 +1,5 @@
+<%@page import="miTiendaZamoraRicoFernando.logica.User"%>
+<%@page import="miTiendaZamoraRicoFernando.accesoDatos.UserDAO"%>
 <%@page import="miTiendaZamoraRicoFernando.logica.Cart"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -5,31 +7,25 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Carrito</title>
+<title>Historial de Compras</title>
 </head>
 <body>
-<% 
+	<%
 	HttpSession sesion = request.getSession();
 	String login = (String) sesion.getAttribute("isLogin");
 	String user = (String) sesion.getAttribute("usuario");
+	Cart listCart = (Cart) sesion.getAttribute("carrito");
 	if (login != null && user != null & login.equals("True")){
-		Cart c = (Cart) sesion.getAttribute("carrito");
-%>
-	<p>
-		<%=c.getListCart()%>
-	</p>
-	
-	<a href="buy.jsp">
-		<button>Comprar</button>
-	</a>
-	
-	<a href="mainCategory.jsp">
-		Volver al menú
-	</a>
-<% 
+		UserDAO ud = new UserDAO();
+		User u = ud.findUser(user);
+	%>
+		<p>
+			<%=u.getPurchase()%>
+		</p>
+	<%
 	} else {
 		response.sendRedirect("error.jsp?msg=No estás logueado");
 	}
-%>
+	%>
 </body>
 </html>

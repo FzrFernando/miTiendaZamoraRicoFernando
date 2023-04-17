@@ -33,6 +33,7 @@
 	<% 
 		}
 	%>
+	<a href="record.jsp">Historial de Compras</a>
 	<a href="index.jsp">Close Session</a>
 	
 	<div class="cesta">

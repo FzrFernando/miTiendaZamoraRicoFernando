@@ -1,7 +1,7 @@
 package miTiendaZamoraRicoFernando.logica;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 
 import javax.persistence.Entity;
@@ -26,13 +26,13 @@ public class Purchase {
 	
 	private int amount;
 	private double price;
-	private Date datePurchase;
+	private LocalDate datePurchase;
 	
 	public Purchase() {
 		super();
 	}
 
-	public Purchase(User user, Product product, int amount, double price, Date datePurchase) {
+	public Purchase(User user, Product product, int amount, double price, LocalDate datePurchase) {
 		super();
 		this.user = user;
 		this.product = product;
@@ -73,7 +73,7 @@ public class Purchase {
 		this.price = price;
 	}
 
-	public Date getDatePurchase() {
+	public LocalDate getDatePurchase() {
 		return datePurchase;
 	}
 	
@@ -82,7 +82,7 @@ public class Purchase {
 		return format.format(datePurchase);
 	}
 
-	public void setDatePurchase(Date datePurchase) {
+	public void setDatePurchase(LocalDate datePurchase) {
 		this.datePurchase = datePurchase;
 	}
 
